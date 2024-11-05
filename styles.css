@@ -31,10 +31,15 @@ li {
 /* classes */
 /* ---------------------------------------------------------------------------- */
 .greeting,
+.edu,
 .text {
     color: lightblue;
     font-family: 'Courier New', Courier, monospace;
     margin: auto;
+}
+
+.edu {
+    margin: 0%;
 }
 
 .greeting {
@@ -47,7 +52,7 @@ li {
     background-color: #252525;
     border: solid #101010;
     display: inline-block;
-    width: 49%;
+    width: 48%;
     height: 98%;
 }
 

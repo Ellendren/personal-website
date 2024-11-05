@@ -1,3 +1,23 @@
+class DegreeCert {
+    institution: string;
+    title: string;
+    date: string;
+
+    public constructor(institution: string="", title: string="", date: string=""){
+        this.institution = institution;
+        this.title = title;
+        this.date = date
+    }
+
+    public degree_str() {
+        let degree_str = this.institution.length == 0? this.institution : `<u><b>${this.institution}</b></u><br />`;
+        degree_str = degree_str + (this.title.length == 0? this.title : `${this.title}, `);
+        degree_str = degree_str + (this.date.length == 0? this.date : `${this.date}`) + `<br>`;
+
+        return degree_str;
+    }
+}
+
 function info(classname?: string, classNametext?: string) {
     let _classname: string = classname? classname : "info";
     let _classnametext = classNametext? classNametext: "text";
@@ -17,6 +37,7 @@ function info(classname?: string, classNametext?: string) {
     info.appendChild(about(_classnametext));
     info.appendChild(title);
     info.appendChild(links_list());
+    info.appendChild(edu());
 
     return info;
 }
@@ -28,13 +49,40 @@ function about(classNametext: string) {
     let abouttxt = document.createElement("p");
     abouttxt.className = classNametext;
     abouttxt.innerHTML = `
-    <h3><u>About:</u></h3>
+    <h3 style="margin-bottom: 1%"><u>About:</u></h3>
     I'm a software/devops engineer with a BS in Computer science from <a target="_blank" href="https://cs.sonoma.edu/">Sonoma State University</a>. 
     I'm also availible for IT work for hire.
     `;
 
     about.appendChild(abouttxt);
     return about;
+}
+
+function edu(classNametext: string ="edu") {
+    let edu = document.createElement("div");
+    edu.className = classNametext;
+    
+    let edu_h = document.createElement("h3", );
+    edu_h.innerHTML = "<u>Education and training:</u>";
+    edu_h.style.marginBottom = "0px";
+    edu.appendChild(edu_h);
+
+    let edu_txt = document.createElement("ul");
+    edu_txt.style.margin = "0px";
+    let school = new DegreeCert("Sonoma State University", "B.S. Computer Science", "Graduated May, 2022");
+    edu_txt.appendChild(edu_list_item({degree_cert: school, className: classNametext}));
+    edu.appendChild(edu_txt);
+
+    return edu;
+}
+
+function edu_list_item({className="text", degree_cert, is_cert=false} : {className?: string, degree_cert: DegreeCert, is_cert?: boolean}) {
+    let li = document.createElement("li");
+    li.className = className;
+
+    li.innerHTML = is_cert? "" : degree_cert.degree_str();
+
+    return li;
 }
 
 function links_list(classNametext: string = "text") {
