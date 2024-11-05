@@ -1,0 +1,64 @@
+html,
+body {
+    height: 100%;
+}
+
+canvas {
+    height: 100%;
+    width: 100%
+}
+
+body {
+    background-color: #252020;
+    border: solid;
+    padding: 0.5%;
+}
+
+ul {
+    display: inline-block; 
+    padding-top: 1%;
+}
+
+li {
+    text-align: left;
+}
+
+#start {
+    height: 100%;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* classes */
+/* ---------------------------------------------------------------------------- */
+.greeting,
+.text {
+    color: lightblue;
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+}
+
+.greeting {
+    padding-top: 0.2%;
+}
+
+.gears,
+.info {
+    padding: 0.2%;
+    background-color: #252525;
+    border: solid #101010;
+    display: inline-block;
+    width: 49%;
+    height: 98%;
+}
+
+.info {
+    float: left;
+}
+
+.about {
+    padding-bottom: 2%;
+}
+
+.gears {
+    float: right;
+}
