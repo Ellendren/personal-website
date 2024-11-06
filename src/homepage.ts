@@ -1,3 +1,5 @@
+import canvas from "./canvas.js";
+
 class DegreeCert {
     institution: string;
     title: string;
@@ -125,13 +127,14 @@ function link_item({path, name, className = "text"} : {path: string, name?: stri
     return li;
 }
 
-function canvas() {
+function canvas_div() {
     let canvas_div = document.createElement("div");
     canvas_div.className = "gears";
     
-    let canvas = document.createElement("canvas");
+    let _canvas = document.createElement('canvas');
+    canvas_div.appendChild(_canvas);
+    canvas(_canvas);
 
-    canvas_div.appendChild(canvas);
     return canvas_div;
 }
 
@@ -139,7 +142,7 @@ function homepage(elemid: string = "start") {
     let homepage_div = document.getElementById(elemid);
 
     homepage_div?.append(info());
-    homepage_div?.append(canvas());
+    homepage_div?.append(canvas_div());
 }
 
 export {homepage};
