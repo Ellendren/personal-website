@@ -16,6 +16,14 @@ class DegreeCert {
 
         return degree_str;
     }
+
+    public cert_str() {
+        let cert_str = this.title.length == 0? this.title :  `<u><b>${this.title}</b></u><br />`;
+        cert_str += this.institution.length == 0?  this.institution : `${this.institution}, `;
+        cert_str += (this.date.length == 0? this.date : `${this.date}`) + `<br>`;
+
+        return cert_str;
+    }
 }
 
 function info(classname?: string, classNametext?: string) {
@@ -69,9 +77,14 @@ function edu(classNametext: string ="edu") {
 
     let edu_txt = document.createElement("ul");
     edu_txt.style.margin = "0px";
+
     let school = new DegreeCert("Sonoma State University", "B.S. Computer Science", "Graduated May, 2022");
     edu_txt.appendChild(edu_list_item({degree_cert: school, className: classNametext}));
+    let comptia_a_plus = new DegreeCert("CompTIA", 'CompTIA A+', "Nov 1, 2024");
+    edu_txt.appendChild(edu_list_item({degree_cert: comptia_a_plus, className: classNametext, is_cert: true}));
+
     edu.appendChild(edu_txt);
+
 
     return edu;
 }
@@ -80,7 +93,7 @@ function edu_list_item({className="text", degree_cert, is_cert=false} : {classNa
     let li = document.createElement("li");
     li.className = className;
 
-    li.innerHTML = is_cert? "" : degree_cert.degree_str();
+    li.innerHTML = is_cert? degree_cert.cert_str() : degree_cert.degree_str();
 
     return li;
 }
