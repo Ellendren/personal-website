@@ -20,7 +20,7 @@ export default function Stars(num = 500, far: number){
     let positions = new Float32Array(num*3);
 
     for (let i = 0; i < num*3; i++){
-        let num = (Math.random() - 0.5);
+        let num = (Math.random() - 0.5) * far * 2;
 
         positions[i] = num;
     }
