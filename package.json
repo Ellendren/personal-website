@@ -1,4 +1,8 @@
-{
+{ 
+  "name": "my-awesome-package",
+  "version": "0.1.0",
+  "author": "Luke T. Shoulders",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/three": "^0.169.0",
     "three": "^0.170.0",
