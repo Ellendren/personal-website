@@ -13,14 +13,14 @@ Reurns: its self
 export default function Stars(num = 500, far: number){
 
     let material = new PointsMaterial({
-        size: 0.01,
-        color: 0xFFFFFF
+        size: 0.001,
+        color: 0xffffff
     });
 
     let positions = new Float32Array(num*3);
 
     for (let i = 0; i < num*3; i++){
-        let num = (Math.random() - 0.5) * far * 2;
+        let num = (Math.random() - 0.5);
 
         positions[i] = num;
     }

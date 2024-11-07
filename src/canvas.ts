@@ -2,16 +2,17 @@ import * as THREE from 'three';
 // import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls';
 import Stars from './stars.js';
 
-export default function canvas(canvas: Element) {
+export default function canvas(canvas: HTMLCanvasElement) {
 
     const renderer = new THREE.WebGLRenderer({canvas});
 
+
     const fov = 75;
-    const aspect = canvas.clientWidth/canvas.clientHeight; 
+    const aspect = canvas.width/canvas.height; 
     const near = 0.1;
     const far = 1000;
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.z = 2;
+    camera.position.z = 0;
 
     const scene = new THREE.Scene();
 
@@ -23,7 +24,6 @@ export default function canvas(canvas: Element) {
     scene.add(stars.points);
 
     const render = () => {
-
         renderer.render(scene, camera);
     };
 

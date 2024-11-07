@@ -132,8 +132,8 @@ function canvas_div() {
     canvas_div.className = "gears";
     
     let _canvas = document.createElement('canvas');
-    canvas_div.appendChild(_canvas);
     canvas(_canvas);
+    canvas_div.appendChild(_canvas);
 
     return canvas_div;
 }
