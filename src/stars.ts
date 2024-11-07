@@ -6,7 +6,7 @@ the distance
 ********************************************************************
 Varible(s):
     -num: the number of stars to be rendered
-    -far: the number of the far veiing plane
+    -range: range of the random placment of points
 ********************************************************************
 Reurns: its self
 */

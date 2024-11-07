@@ -1,8 +1,10 @@
 import * as THREE from 'three';
-import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Stars from './stars.js';
 
-export default function canvas(canvas: HTMLCanvasElement) {
+let clock =  new THREE.Clock();
+
+export default async function canvas(canvas: HTMLCanvasElement) {
 
     const renderer = new THREE.WebGLRenderer({canvas});
 
@@ -10,25 +12,34 @@ export default function canvas(canvas: HTMLCanvasElement) {
     const fov = 75;
     const aspect = canvas.width/canvas.height; 
     const near = 0.1;
-    const far = 100;
+    const far = 1000;
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.z = 2;
 
     const scene = new THREE.Scene()
 
-    const controls = new ArcballControls(camera, renderer.domElement, scene);
-    controls.setGizmosVisible(false);
-
-    const stars = Stars(2000, far);
+    let range = 20000;
+    let num_stars = 2000000;
+    const stars = Stars(num_stars, range);
 
     scene.add(stars.points);
 
     const render = () => {
         renderer.render(scene, camera);
     };
-    controls.addEventListener('change', function() {
-        requestAnimationFrame(render);
-    });
 
-    requestAnimationFrame(render);
+    const animate = () => {
+        let move = clock.getElapsedTime() * 0.125;
+        requestAnimationFrame(animate);
+
+        camera.position.x += move;
+        if (camera.position.x >= range/2) {
+            console.log("hello");
+            camera.position.x = -range/2;
+        }
+
+        render();
+    }
+
+    animate();
 }
