@@ -149,6 +149,17 @@ function canvas_div() {
     canvas(_canvas);
     canvas_div.appendChild(_canvas);
 
+    const resiveObserver = new ResizeObserver((entries) => {
+        let new_height = canvas_div.clientHeight-5.4;
+        let new_width = canvas_div.clientWidth-5.4;
+        _canvas.style.height = `${new_height}px`;
+        _canvas.style.width = `${new_width}px`;
+        _canvas.height = new_height;
+        _canvas.width = new_width;
+
+    })
+    resiveObserver.observe(canvas_div);
+
     return canvas_div;
 }
 

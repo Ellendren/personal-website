@@ -13,7 +13,7 @@ Reurns: its self
 export default function Stars(num = 500, far: number){
 
     let material = new PointsMaterial({
-        size: 0.001,
+        size: 2,
         color: 0xffffff
     });
 

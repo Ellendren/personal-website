@@ -28,7 +28,9 @@ function services(className: string = "text") {
         return service;
     }
     let services = document.createElement("ul");
-    // services.style.columns = "150px 3";
+    let space = 150;
+    let columns = Math.round((window.innerWidth * 0.33)/space);
+    services.style.columns = `${space}px ${columns}`;
     services.className = className;
     service_list.forEach((s) => {services.appendChild(service(s))});
     service_div.appendChild(services);
@@ -74,7 +76,7 @@ export default function it(className?: string, classNametext?: string) {
     desc.className = _classNametext;
     desc.style.margin = "2%";
     desc.textContent = `I offer IT services for both office and home needs in Sonoma County, CA. 
-        Email me with questions about services or to set up appointment`
+        Email me with questions about services or to set up an appointment`
     it.appendChild(desc);
 
     it.appendChild(services());
