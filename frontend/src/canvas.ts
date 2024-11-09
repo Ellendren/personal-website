@@ -7,7 +7,7 @@ let clock =  new THREE.Clock();
 export default async function canvas(canvas: HTMLCanvasElement) {
 
     const renderer = new THREE.WebGLRenderer({canvas});
-
+    renderer.setSize(canvas.width, canvas.height);
 
     const fov = 75;
     const aspect = canvas.width/canvas.height; 
@@ -40,6 +40,15 @@ export default async function canvas(canvas: HTMLCanvasElement) {
 
         render();
     }
+
+    const resiveObserver = new ResizeObserver((entries) => {
+        camera.aspect = canvas.width / canvas.height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(canvas.width, canvas.height);
+        requestAnimationFrame(render);
+    })
+    resiveObserver.observe(canvas);
 
     animate();
 }

@@ -16,5 +16,5 @@ let tartget = process.env.TARGET;
 let app = express();
 app.use(express.static(tartget));
 
-// http.createServer(app).listen(80);
-https.createServer(options, app).listen(port);
+http.createServer(app).listen(port);
+// https.createServer(options, app).listen(port);
