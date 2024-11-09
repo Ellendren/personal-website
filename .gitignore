@@ -1,3 +1,6 @@
-*.js
+frontend/src/*.js
+frontend/*.js
 package-lock*
 *node_modules
+serv/certs
+serv/.env
