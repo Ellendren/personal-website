@@ -29,12 +29,12 @@ export default async function canvas(canvas: HTMLCanvasElement) {
     };
 
     const animate = () => {
-        let move = clock.getElapsedTime() * 0.125;
+        let _ = clock.getElapsedTime();
+        let move = 5;
         requestAnimationFrame(animate);
 
         camera.position.x += move;
         if (camera.position.x >= range/2) {
-            console.log("hello");
             camera.position.x = -range/2;
         }
 

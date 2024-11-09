@@ -1,4 +1,5 @@
 import canvas from "./canvas.js";
+import it from "../it.js";
 
 class DegreeCert {
     institution: string;
@@ -106,21 +107,34 @@ function links_list(classNametext: string = "text") {
 
     let linkedin = link_item({path: "https://www.linkedin.com/in/luke-shoulders-b99b8a159/", className: classNametext, name: "linkedin"});
     let github = link_item({path: "https://github.com/Ellendren", className: classNametext, name: "github"});
+    let it = link_item({path: (document.URL + 'it'), className: classNametext, name: "IT work for hire"}, false);
+    it.onclick = (e) => {
+        e.preventDefault();
+        let new_url = 'it';
+        let state = {page_id: 1};
+
+        history.pushState(state, '', new_url);
+        let popstate = new PopStateEvent('popstate', {state});
+        dispatchEvent(popstate);
+    }
 
     links.appendChild(linkedin);
     links.appendChild(github);
+    links.appendChild(it);
 
     return links;
 }
 
-function link_item({path, name, className = "text"} : {path: string, name?: string, className?: string}) {
+function link_item({path, name, className = "text"} : {path: string, name?: string, className?: string}, new_tab: boolean=true) {
     let li = document.createElement("li");
     li.className = className;
 
     let link = document.createElement("a");
     link.href = path;
     link.text = name? name : path;
-    link.target= "_blank";
+    if (new_tab) {
+        link.target= "_blank";
+    }
 
     li.appendChild(link);
 
@@ -140,9 +154,29 @@ function canvas_div() {
 
 function homepage(elemid: string = "start") {
     let homepage_div = document.getElementById(elemid);
+    let info_class_name = "info";
 
-    homepage_div?.append(info());
+    let get_info = () => {
+        let location = window.location.origin + '/';
+        let url = document.URL;
+        if (url === location || (location + "index.html") === url){
+            return info();
+        }
+        else {
+            return it();
+        }
+    }
+
+    let path_change = (e: Event) => {
+        let old_info = document.getElementsByClassName(info_class_name);
+        let new_info = get_info();
+        homepage_div?.replaceChild(new_info, old_info[0]);
+    }
+
+    homepage_div?.append(get_info());
     homepage_div?.append(canvas_div());
+
+    window.addEventListener('popstate', path_change);
 }
 
 export {homepage};
