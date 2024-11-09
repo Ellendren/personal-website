@@ -3,4 +3,4 @@ frontend/*.js
 package-lock*
 *node_modules
 serv/certs
-*.env
+serv/.env
