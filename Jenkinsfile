@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("Update Database"){
             steps{
-                sh './util.build.sh'
+                sh './util/build.sh'
             }
         }
     }
