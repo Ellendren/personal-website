@@ -6,7 +6,7 @@ pipeline{
     }
 
     stages{
-        stage("Update Database"){
+        stage("build"){
             steps{
                 sh './util/build.sh'
             }
