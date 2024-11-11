@@ -1,3 +1,5 @@
+import { edu } from "./src/homepage.js";
+
 function services(className: string = "text") {
     let service_div = document.createElement('div');
     service_div.className = className;
@@ -39,14 +41,15 @@ function services(className: string = "text") {
 }
 
 function contact(className: string = "text") {
-    let contavt_div = document.createElement("div");
-    contavt_div.className = className;
-    contavt_div.style.marginTop = '2%'
+    let contact_div = document.createElement("div");
+    contact_div.className = className;
+    contact_div.style.marginTop = '2%'
+    contact_div.style.float = 'bottom';
 
     let title = document.createElement('h3');
     title.className = className;
     title.innerHTML = `<u>Contact</u>`
-    contavt_div.appendChild(title);
+    contact_div.appendChild(title);
 
     let contacts = document.createElement('ul');
     contacts.className = className;
@@ -55,9 +58,9 @@ function contact(className: string = "text") {
     let e_address = "ellendrenit@gmail.com";
     email.innerHTML = `<a href="mailto: ${e_address}">${e_address}</a>`
     contacts.appendChild(email);
-    contavt_div.appendChild(contacts);
+    contact_div.appendChild(contacts);
 
-    return contavt_div
+    return contact_div
 }
 
 export default function it(className?: string, classNametext?: string) {
@@ -80,6 +83,7 @@ export default function it(className?: string, classNametext?: string) {
     it.appendChild(desc);
 
     it.appendChild(services());
+    it.appendChild(edu());
     it.appendChild(contact());
 
     return it;
