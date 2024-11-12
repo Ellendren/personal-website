@@ -16,11 +16,21 @@ function services(className: string = "text") {
         "networking", 
         "firewall", 
         "installation", 
+        "desktop",
+        "laptop",
+        "mobile",
+        "LAN",
         "software",
         "hardware",
         "email", 
         "virus removal", 
-        "website help"
+        "website help",
+        "server",
+        "Windows",
+        "Linux",
+        "POS Systems",
+        "Android",
+        "Apple"
     ];
     let service = (name: string) => {
         let service = document.createElement('li');
@@ -37,6 +47,14 @@ function services(className: string = "text") {
     service_list.forEach((s) => {services.appendChild(service(s))});
     service_div.appendChild(services);
 
+    const resize = new ResizeObserver((entries) => {
+        let space = 185;
+        let columns = Math.round((service_div.clientWidth * 80)/space);
+        console.log(`${space}px ${columns}`);
+        services.style.columns = `${space}px ${columns}`;
+    });
+    resize.observe(service_div);
+
     return service_div;
 }
 
@@ -48,7 +66,7 @@ function contact(className: string = "text") {
 
     let title = document.createElement('h3');
     title.className = className;
-    title.innerHTML = `<u>Contact</u>`
+    title.innerHTML = `<u class=${className}>Contact</u>`
     contact_div.appendChild(title);
 
     let contacts = document.createElement('ul');
@@ -56,11 +74,40 @@ function contact(className: string = "text") {
     let email = document.createElement('li');
     email.className = className;
     let e_address = "ellendrenit@gmail.com";
-    email.innerHTML = `<a href="mailto: ${e_address}">${e_address}</a>`
+    email.innerHTML = `<a href="mailto: ${e_address}" class=${className}>${e_address}</a>`
     contacts.appendChild(email);
     contact_div.appendChild(contacts);
 
     return contact_div
+}
+
+function tab(className = "tabstext") {
+    let div = document.createElement('div');
+    div.className = className;
+    div.style.height = '170px';
+
+    let h3 = document.createElement('h3');
+    h3.className = className;
+    h3.innerHTML = `Contact me for IT help<br />- Luke T. Shoulders`;
+    div.appendChild(h3);
+
+    let con = contact(className)
+    con.style.border = "none";
+    div.appendChild(con);
+
+    return(div);
+} 
+
+function tear_away(className: string = "tabs") {
+    let nbr_tabs = 8;
+    let tab_div = document.createElement('div');
+    tab_div.className = className;
+
+    for (let i = 0; i < nbr_tabs; i++) {
+        tab_div.appendChild(tab('tabstext'));
+    }
+
+    return tab_div;
 }
 
 export default function it(className?: string, classNametext?: string) {
@@ -85,6 +132,7 @@ export default function it(className?: string, classNametext?: string) {
     it.appendChild(services());
     it.appendChild(edu());
     it.appendChild(contact());
+    it.appendChild(tear_away());
 
     return it;
 } 
