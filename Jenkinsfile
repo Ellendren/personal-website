@@ -11,6 +11,11 @@ pipeline{
                 sh './util/build.sh'
             }
         }
+        stage("deploy"){
+            steps {
+                sh './util/start-server.sh'
+            }
+        }
     }
     post{
         always{
