@@ -190,4 +190,4 @@ function homepage(elemid: string = "start") {
     window.addEventListener('popstate', path_change);
 }
 
-export {homepage};
+export {homepage, edu};

@@ -1,7 +1,6 @@
 html,
 body {
-    height: 11in;
-    width: 8.5in;
+    height: 100%;
 }
 
 a {
@@ -71,4 +70,102 @@ li {
 
 .gears {
     float: right;
+}
+
+.tabs {
+    display: none;
+}
+
+.tabstext {
+    display: none;
+}
+
+@media print {
+    a {
+        font-size: 35px;
+    }
+
+    a.tabstext {
+        font-size: 25px;
+    }
+
+    h3,
+    h3.text {
+        font-size: 50px;
+    }
+
+    .tabs {
+        display: block;
+        margin-bottom: 0;
+        position: fixed;
+        bottom: 3%;
+        width: 400px;
+        background-color: #252020;
+        padding: 0.2%;
+        background-color: #252525;
+        transform: rotate(-90deg) translate(-145%, 36.2%);
+    }
+
+    .tabstext {
+        font-size: 25px;
+        display: block;
+    }
+
+    div.tabstext {
+        display: block;
+        padding: 0.2%;
+        margin-bottom: 3%;
+        background-color: #252525;
+        border: solid #101010;
+    }
+
+    #header,
+    #footer,
+    #nav {
+        display: none !important;
+    }
+
+    html,
+    body,
+    .gears,
+    .info {
+        print-color-adjust: exact;
+    }
+
+    .greeting,
+    .edu,
+    .tabstext,
+    .text {
+        color: lightblue;
+        font-family: 'Courier New', Courier, monospace;
+        margin: auto;
+    }
+
+    .greeting,
+    .edu,
+    .text {
+        font-size: 45px;
+    }
+
+    li.text {
+        font-size: 25px;
+    }
+
+    body {
+      margin: 0;
+      background-color: #252020;
+    }
+  
+    .gears {
+        width: 0%;
+    }
+    .info {
+        padding: 0.2%;
+        background-color: #252525;
+        border: solid #101010;
+        display: inline-block;
+        width: 100%;
+        height: 98%;
+        position: relative;
+    }
 }
