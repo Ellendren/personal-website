@@ -1,5 +1,6 @@
 frontend/src/*.js
 frontend/*.js
+frontend/target
 package-lock*
 *node_modules
 serv/certs

@@ -13,7 +13,7 @@ pipeline{
         }
         stage("deploy"){
             steps {
-                sh './util/start-server.sh'
+                sh './util/docker-deploy.sh'
             }
         }
     }
