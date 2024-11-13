@@ -9,4 +9,4 @@ fi
 
 #start web server
 cd serv
-node index.js &
+node index.js
